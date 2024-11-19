@@ -54,8 +54,8 @@ session_start();
             text-align: center;
             margin: 5px 0;
         }
-        .fa fa-eye{
-            margin-top: 150% !important;
+        i{
+            margin-top: 5% !important;
         }
     </style>
 </head>
