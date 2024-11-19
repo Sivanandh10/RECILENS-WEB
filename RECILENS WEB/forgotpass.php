@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 }
 
 $message = "";
-$messageType = ""; // To hold the type of message (success or error)
+$messageType = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
@@ -23,19 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Password must be between 6 and 8 characters.";
         $messageType = "error";
     } else {
-        // Sanitize email input
         $email = $conn->real_escape_string($email);
-        
-        // Check if email exists
         $query = "SELECT * FROM users WHERE email = '$email'";
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) {
             if ($new_password === $confirm_password) {
-                // Sanitize password input (not a complete solution)
                 $new_password = $conn->real_escape_string($new_password);
-                
-                // Update the password
                 $update_query = "UPDATE users SET password = '$new_password' WHERE email = '$email'";
                 if ($conn->query($update_query) === TRUE) {
                     $message = "Password updated successfully. Redirecting to login...";
@@ -68,10 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <style>
         body {
             font-family: Arial, sans-serif;
-            overflow: hidden; /* Prevent scrollbars */
+            overflow: hidden; 
             position: relative;
             margin: 0;
-            height: 100vh; /* Full viewport height */
+            height: 100vh; 
         }
 
         .background {
@@ -79,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%; /* Full height */
+            height: 100%; 
             background: linear-gradient(135deg, #74ebd5, #acb6e5);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
