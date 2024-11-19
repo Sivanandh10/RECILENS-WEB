@@ -11,7 +11,6 @@ session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="loader.css">
     <style>
-        /* Video Background */
         #myVideo {
             position: fixed;
             right: 0;
@@ -55,6 +54,9 @@ session_start();
             text-align: center;
             margin: 5px 0;
         }
+        .fa fa-eye{
+            margin-top: 150% !important;
+        }
     </style>
 </head>
 <body class="loading">
@@ -73,10 +75,10 @@ session_start();
                     <input type="email" class="form-control" id="email" name="email" placeholder="abc@gmail.com" required>
                     <span id="email-error" class="error-message text-danger"></span>
                 </div>
-                <div class="form-group password-container">
+                <div class="form-group password-container position-relative">
                     <label for="password">Password:</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                    <i class="fa fa-eye" id="eye" onclick="togglePassword()" style="cursor: pointer; position: absolute; right: 10px; top: 38px;"></i>
+                    <i class="fa fa-eye" id="eye" onclick="togglePassword()" style="cursor: pointer; position: absolute; right: 10px; top: 38%;"></i>
                     <span id="password-error" class="error-message text-danger"></span>
                 </div>
                 <div class="captcha-area">
