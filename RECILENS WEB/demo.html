@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECILENS CORPORATION</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .navbar img {
+            height: 40px; 
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: black;
+            padding: 8px 15px;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .nav-links a.active {
+            color: #007bff; 
+            text-decoration: underline; /* Underline active link */
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 3px; 
+            background: linear-gradient(to right, red, blue, green, yellow); 
+            transform: translateX(-100%); 
+            transition: transform 0.3s; 
+        }
+
+        .nav-links a.active:after {
+            transform: scaleX(1);
+        }
+        .nav-links a:hover:after {
+            transform: translateX(0); 
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-right: 50px;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .login {
+            background: blue;
+        }
+        .signup {
+            background: green;
+        }
+        .buttons button:hover {
+            opacity: 0.8;
+        }
+        .l {
+            margin-top: -35px;
+            font-size: 20px;
+            margin-left: 45px;
+        }
+        .hero {
+            display: flex;
+            margin-top: 100px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 30px;
+            opacity: 0;
+            transition: opacity 1s;
+            animation: fadeIn 1s forwards;
+        }
+
+        .hero img {
+            max-width: 600px; 
+            height: auto;
+            margin-top: -30px;
+            margin-right: 30px;
+            opacity: 0;
+            transition: opacity 1s;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s; 
+        }
+        .herop {
+            color: rgb(0, 145, 255);
+            padding: 0;
+            margin: 0;
+        }
+        .slogan {
+            max-width: 600px;
+            padding: 0;
+            margin: 0;
+            margin-top: 35px;
+            margin-left: 60px;
+        }
+
+        .slogan .animated {
+            display: inline-block;
+            color: rgb(255, 13, 0);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .small-paragraph {
+            margin-top: 20px;
+            color: rgb(94, 207, 115);
+            font-size: 20px;
+            margin-left: 10px;
+            text-align: justify;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 1s; 
+        }
+        @media (max-width: 400px) {
+            .nav-links {
+                display: none;
+            }
+            .navbar i {
+                display: block; 
+            }
+        }
+        .about-us {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 100px 30px;
+            background-color: white ;
+            opacity: 0;
+            transition: opacity 1s;
+            animation: fadeIn 1s forwards; 
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%; 
+            max-width: 1200px; 
+            position: relative;
+        }
+
+        .image-wrapper {
+            width: 700px; 
+            height: 400px; 
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.5s;
+        }
+
+        .image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: opacity 0.5s;
+        }
+
+        .description {
+            display: none; 
+            font-family: 'Courier New', Courier, monospace;
+            text-align: left;
+            padding: 100px; 
+            font-size: 17px;
+            opacity: 0; 
+            transition: opacity 0.5s;
+        }
+        .ab {
+            color: rgb(222, 206, 28);
+            margin-bottom: 50px;
+        }
+
+        .image-wrapper:hover {
+            transform: translateX(-20px);
+        }
+        .products-section {
+            padding: 50px 30px;
+            background-color: white;
+            text-align: center; 
+        }
+
+        .products-header {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #2546cc; 
+        }
+        .products-header1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #25cc6b; 
+        }
+        .products {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-bottom: 30px; 
+        }
+
+        .product-card {
+            width: 300px; 
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden; 
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card img {
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+        }
+
+        .product-card h3 {
+            margin: 15px 0;
+        }
+
+        .product-card p {
+            padding: 0 15px;
+            margin-bottom: 15px;
+        }
+
+        .know-more-btn, .view-all-btn {
+            background-color: #007bff; 
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 10px; 
+        }
+
+        .know-more-btn:hover, .view-all-btn:hover {
+            background-color: #0056b3; 
+            transform: scale(1.05); 
+        }
+
+        .product-card:hover {
+            transform: scale(1.05); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+        }
+
+        .view-all-btn {
+            margin-top: 20px; 
+            font-size: 1.2em; 
+        }
+        .careers {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 30px;
+            background-color: #ffffff; 
+            opacity: 0;
+            animation: fadeIn 1s forwards; 
+        }
+
+        .slogan1 {
+            max-width: 500px; 
+            text-align: justify;
+            margin-top: -30px;
+            margin-left: 10%;
+        }
+
+        .slogan1 h2 {
+            font-size: 24px;
+            color: #ccc42f; 
+            animation: slideInLeft 1s forwards; 
+            margin-bottom: 30px;
+        }
+        .ca {
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+            margin-top: 60px;
+            color: #ca3e1e;
+        }
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .career-description {
+            font-size: 18px;
+            color: #07a641; 
+            margin: 10px 10;
+            animation: slideInLeft 1 ```html
+s forwards; 
+            animation-delay: 0.5s;
+            margin-left: 12%; 
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #007bff; 
+            color: white; 
+            text-align: center;
+            margin-left: 30%;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            animation: slideInLeft 1s forwards; 
+            animation-delay: 1s; 
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3; 
+        }
+
+        .image-container {
+            width: 300px; 
+            height: 300px; 
+            position: relative; 
+            margin-right: 10%;
+        }
+
+        .diamond-image {
+            width: 100%;
+            height: 100%;
+            position: absolute; 
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); 
+            border: 5px solid transparent; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+        }
+
+        .diamond-image:hover {
+            transform: scale(1.05); 
+            box-shadow: 0 0 50px rgba(0, 64, 255, 0.7); 
+            border-color: rgba(255, 0, 0, 0.7); 
+        }
+        .logo a {
+            text-decoration: none;
+        }
+        .l {
+            color: rgb(244, 244, 244);
+            background: linear-gradient(to right, red, blue, green, yellow);
+            text-align: center;
+            width: 110px;
+        }
+        .footer {
+            color: rgb(28, 27, 27); 
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
+            flex-wrap: wrap; 
+            animation: fadeIn 1s forwards; 
+            background: rgba(111, 111, 111, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .footer-left, .footer-right {
+            width: 40%;
+            margin: 15px; 
+        }
+
+        .footer h3 {
+            margin-bottom: 15px; 
+        }
+
+        .footer a {
+            color: rgb(255, 254, 254);
+            text-decoration: none; 
+            padding: 5px 0; 
+            display: block; 
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .footer a:hover:after {
+            transform: translateX(0); 
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column; 
+        }
+
+        .contact-form input, .contact-form textarea {
+            margin-bottom: 10px;
+            padding: 10px; 
+            border: none; 
+            border-radius: 5px; 
+            width: 100%; 
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background-color: #007bff; 
+            color: white;
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3; 
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: space-around; 
+            margin-top: 20px; 
+        }
+
+        .social-icons img {
+            width: 30px; 
+            margin: 0 5px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1); 
+        }
+        .foo {
+            display: flex;
+            flex-direction: row;
+            gap: 13px;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: transparent; 
+            border: none; 
+            cursor: pointer; 
+            font-size: 30px; 
+            color: whitesmoke;
+            background: linear-gradient(to right, red, blue, green, yellow);
+            border-radius: 80px;
+            display: none; 
+            transition: transform 0.3s;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px red, 0 0 10px green, 0 0 15px blue, 0 0 20px yellow;
+            }
+            100% {
+                text-shadow: 0 0 10px red, 0 0 20px green, 0 0 30px blue, 0 0 40px yellow;
+            }
+        }
+
+        .scroll-to-top:before {
+            content: '↑'; 
+            display: inline-block;
+            line-height: 50px; 
+            text-align: center; 
+        }
+        .hero video {
+            width: 400px; 
+            height: auto; 
+            border-radius: 15px;
+            margin-right: 8%;
+            margin-top: 6%;
+        }
+
+        .section {
+            opacity: 0; /* Start hidden */
+            transition: opacity 0.5s; /* Fade effect */
+        }
+
+        .section.visible {
+            opacity: 1; /* Fade in */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="#home">
+            <img src="RECILENS LOGO 500 X 500  - Copy.png" alt="Company Logo">
+            <h1 class="l">RECILENS</h1></a>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#products" class="nav-link">Products</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#careers" class="nav-link">Careers</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="buttons">
+            <a href="loginh.php"><button class="login">Login</button></a>
+            <a href="sing in.php"><button class="signup">Sign Up</button></a>
+        </div>
+    </div>
+    <div class="hero section visible" id="home">
+        <div class="slogan">
+            <h1 class="herop">Your Gateway to<h2 class="herop">Innovative Software <span class="animated" id="animated-text"></span></h2></h1>
+            <p class="small-paragraph">We are your trusted partner in driving digital transformation. Specializing in cutting-edge software solutions, we offer comprehensive services including website development, mobile app creation, and robust security measures. Our team of experts is dedicated to turning your vision into reality, ensuring your digital presence is not just secure, but also exceptional.</p>
+        </div>
+        <video autoplay muted loop>
+            <source src="home.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="about-us section" id="about">
+        <h2 class="ab">About Us</h2>
+        <div class="about-container">
+            <div class="image-wrapper" id="image-container">
+                <img src="group.jpg" alt="Image 1" class="image" style="opacity: 1;">
+                <img src="group1.jpg" alt="Image 2" class="image" style="opacity: 0;">
+                <img src="group2.jpg" alt="Image 3" class="image" style="opacity: 0;">
+                <img src="group3.jpg" alt="Image 4" class="image" style="opacity: 0;">
+            </div>
+            <div class="description" id="description">
+                <p>We are your trusted partner in driving digital transformation. Specializing in cutting-edge software solutions</p>
+            </div>
+        </div>
+    </div>
+    <div class="products-section section" id="products">
+        <h2 class="products-header">PRODUCTS</h2> 
+        <div class="products">
+            <div class="product-card">
+                <img src="product1.webp" alt="Product 1">
+                <h3>Product 1</h3>
+                <p>This is a brief description of Product 1. It offers great features.</p>
+                <button class="know-more-btn">Know More</button> 
+            </div>
+            <div class="product-card">
+ ```html
+                <img src="product2.webp" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>This is a brief description of Product 2. It is designed for efficiency.</p>
+                <button class="know-more-btn">Know More</button> 
+            </div>
+            <div class="product-card">
+                <img src="product3.webp" alt="Product 3">
+                <h3>Product 3</h3>
+                <p>This is a brief description of Product 3. It provides excellent performance.</p>
+                <button class="know-more-btn">Know More</button> 
+            </div>
+        </div>
+        <button class="view-all-btn">View All Products</button> 
+    </div>
+    <div class="products-section section" id="services">
+        <h2 class="products-header1">SERVICES</h2> 
+        <div class="products">
+            <div class="product-card">
+                <img src="service (1).jpg" alt="Product 1">
+                <h3>IT SERVICE</h3>
+                <p>This is a brief description of SERVICE 1. It offers great features.</p>
+                <button class="know-more-btn">Know More</button> 
+            </div>
+            <div class="product-card">
+                <img src="service (2).jpg" alt="Product 2"> 
+                <h3>NETWORK SECURITY</h3>
+                <p>This is a brief description of SERVICE 2. It is designed for efficiency.</p>
+                <button class="know-more-btn">Know More</button> 
+            </div>
+            <div class="product-card">
+                <img src="service (3).jpg" alt="Product 3">
+                <h3>MAINTENANCE FOR COMPUTER IT SERVICE</h3>
+                <p>This is a brief description of SERVICE 3. It provides excellent performance.</p>
+                <button class="know-more-btn">Know More</button> 
+            </div>
+        </div>
+        <button class="view-all-btn">View All Products</button> 
+    </div>
+    <h2 class="ca section" id="careers">CAREERS</h2>
+    <div class="careers section">
+        <div class="slogan1">
+            <h2>Join Our Team at RECILENS</h2>
+            <p class="career-description">At RECILENS, we're always on the lookout for passionate individuals ready to make a difference. Whether you're looking for internships or full-time positions, we offer exciting opportunities to grow and innovate.</p>
+            <button class="button">Let's Kick Start</button>
+        </div>
+        <div class="image-container">
+            <img src="service (2).jpg" alt="Career Image" class="diamond-image">
+        </div>
+    </div>
+    <div class="footer section" id="contact">
+        <div class="footer-left">
+            <div>
+                <h3 style="display: flex; float: right; margin-right: 70%; background: linear-gradient(to right, red, blue, green, yellow); width: 100px; text-align: center;">RECILENS</h3>
+                <img src="RECILENS LOGO 500 X 500  - Copy.png" class="logo" alt="Company Logo" height="50">
+            </div>
+            <div>
+                <h3 style="margin-top: 80px;">Contact Us</h3>
+                <form class="contact-form" action="mailto:sivanandh10cc@gmail.com" method="post" enctype="text/plain">
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="body" placeholder="Body" rows="4" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-right">
+            <h3 style="text-align: center;">Quick Links</h3>
+            <div class="foo">
+                <a href="#products">Products</a>
+                <a>|</a><a href="#services">Services</a>
+                <a>|</a><a href="#about">About</a>
+                <a>|</a><a href="#careers">Careers</a>
+                <a>|</a><a href="#contact">Contact</a>
+                <a>|</a><a href="#terms">Terms & Conditions</a>
+            </div>
+            <div>
+                <h3 style ```html
+                <text-align: center;">Our Products</h3>
+                <div style="display: flex; flex-wrap: wrap; margin-left: 150px;">
+                    <div style="width: 50%;">
+                        <a href="#product1">Product 1</a>
+                        <a href="#product2">Product 2</a>
+                        <a href="#product3">Product 3</a>
+                        <a href="#product4">Product 4</a>
+                        <a href="#product5">Product 5</a>
+                        <a href="#product6">Product 6</a>
+                    </div>
+                    <div style="width: 50%;">
+                        <a href="#product7">Product 7</a>
+                        <a href="#product8">Product 8</a>
+                        <a href="#product9">Product 9</a>
+                        <a href="#product10">Product 10</a>
+                        <a href="#product11">Product 11</a>
+                        <a href="#product12">Product 12</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="text-align: center;">Our Services</h3>
+                <div style="display: flex; flex-wrap: wrap; margin-left: 150px;">
+                    <div style="width: 50%;">
+                        <a href="#service1">Service 1</a>
+                        <a href="#service2">Service 2</a>
+                        <a href="#service3">Service 3</a>
+                        <a href="#service4">Service 4</a>
+                    </div>
+                    <div style="width: 50%;">
+                        <a href="#service5">Service 5</a>
+                        <a href="#service6">Service 6</a>
+                        <a href="#service7">Service 7</a>
+                        <a href="#service8">Service 8</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="social-links" style="color: black; background: rgba(113, 112, 112, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 100%;">
+        <h3 style="color: rgb(0, 0, 0); margin-left: 25%;">Follow Us On :</h3>
+        <div class="social-icons" style="margin-top: 15px; margin-right: 25%;">
+            <a href="https://wa.me" target="_blank"><img src="whatsapp-icon.png" alt="WhatsApp Icon"></a> 
+            <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram Icon"></a>
+            <a href="https://twitter.com" target="_blank"><img src="twitter-icon.png" alt="Twitter Icon"></a>
+            <a href="https://linkedin.com" target="_blank"><img src="linkedin-icon.png" alt="LinkedIn Icon"></a>
+            <a href="https://facebook.com" target="_blank"><img src="facebook-icon.png" alt="Facebook Icon"></a>
+            <a href="https://pinterest.com" target="_blank"><img src="pinterest-icon.png" alt="Pinterest Icon"></a>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" id="scrollToTopBtn" onclick="scrollToTop()"></button>
+
+    <script>
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.onscroll = function() {
+            // Show or hide scroll to top button
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+
+            // Fade in/out sections and highlight active nav link
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top >= 0 && rect.top < window.innerHeight) {
+                    section.classList.add('visible');
+                    const id = section.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active }
+                    });
+                } else {
+                    section.classList.remove('visible');
+                }
+            });
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' 
+            });
+        }
+
+        const phrases = ["Solution!", "Creativity!"];
+        let index = 0;
+
+        function rotateWords() {
+            const animatedText = document.getElementById('animated-text');
+            animatedText.innerHTML = phrases[index];
+            index = (index + 1) % phrases.length;
+        }
+
+        setInterval(rotateWords, 2000);
+        rotateWords();
+        const images = document.querySelectorAll('.image');
+        const description = document.getElementById('description');
+        const descriptions = [
+            "We are your trusted partner in driving digital transformation. Specializing in cutting-edge software solutions",
+            " we offer comprehensive services including website development, mobile app creation, and robust security measures",
+            "We are your trusted partner in driving digital transformation. Specializing in cutting-edge software solutions",
+            " we offer comprehensive services including website development, mobile app creation, and robust security measures"
+        ];
+
+        let currentIndex = 0;
+
+        function updateDisplay() {
+            for (let i = 0; i < images.length; i++) {
+                images[i].style.opacity = (i === currentIndex) ? '1' : '0';
+            }
+            description.innerHTML = descriptions[currentIndex];
+            description.style.opacity = '0';
+            description.style.display = 'none'; 
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateDisplay();
+        }
+
+        setInterval(nextImage, 3000);
+        updateDisplay();
+
+        document.getElementById('image-container').addEventListener('mouseenter', function() {
+            description.style.display = 'block'; 
+            description.style.opacity = '1'; 
+        });
+    </script>
+
+</body>
+</html>
