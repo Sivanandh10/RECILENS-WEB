@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(8, 7, 7);
+    color: #fff; /* Default text color */
+}
+
+.navbar {
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.buttons {
+    display: flex;
+    margin-left: 10px;
+}
+
+.buttons button {
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s; /* Add transition for box-shadow */
+}
+
+.login {
+    background: blue;
+}
+
+.signup {
+    background: green;
+}
+
+.buttons button:hover {
+    opacity: 0.8 !important;
+    background: rgb(240, 240, 101);
+}
+
+/* Button-like styles for nav links */
+.nav-link {
+    display: inline-block; /* Make link behave like a button */
+    padding: 10px 15px; /* Add padding */
+    border-radius: 5px; /* Round the corners */
+    color: #171ae6 !important; /* Override Bootstrap's default link color */
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s; /* Add transition for background, color, and box-shadow */
+}
+
+.nav-link:hover {
+    background: rgba(184, 235, 192, 0.2); /* Light background on hover */
+    color: #f54b07 !important; /* Change color on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+}
+
+.nav-link:active {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect when clicked */
+    transform: translateY(2px); /* Slightly move the button down */
+}
+
+
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+}
+
+.dropdown-item {
+    color: #000; /* Dropdown item text color */
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Change background on hover */
+}
+
+.avatar {
+    position: relative;
+    display: inline-block;
+}
+
+.avatar:hover .dropdown-menu {
+    display: block;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.na {
+    display: flex;
+    flex-direction:column-reverse;
+    flex-wrap: wrap;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    .na{
+        max-width:50%;
+    }
+
+    .navbar-collapse {
+        margin-top: 10px;
+    }
+
+    .l {
+        margin: 0 auto; /* Center the logo text */
+    }
+
+    .avatar img {
+        height: 30px; /* Adjust avatar size for smaller screens */
+    }
+
+    .avatar {
+        display: block;
+    }
+}

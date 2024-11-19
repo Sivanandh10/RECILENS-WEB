@@ -1,0 +1,98 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin:0;
+}
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: -5;
+  }
+  
+  
+
+.signup-container {
+    width: 300px;
+    padding: 20px;
+    border: 2px solid #000;
+    background-color: #f0f2f5;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.signup-container h2 {
+    color: red;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid orange;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: lightblue;
+    border: none;
+    border-radius: 5rem;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #00f;
+    color: #fff;
+}
+
+p {
+    margin-top: 20px;
+    color: black;
+}
+
+a {
+    color: red;
+    font-weight: bold;
+}
+/* Add this to your existing CSS file */
+
+.password-container {
+    position: relative;
+    width: 115%;
+    margin-left: -6%;
+}
+
+.password-container input {
+    width: calc(100% - 40px); 
+}
+
+.password-container i {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 1.2rem;
+}
