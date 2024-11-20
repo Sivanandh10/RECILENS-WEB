@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: rgb(8, 7, 7);
-    color: #fff; /* Default text color */
+    color: #fff; 
 }
 
 .navbar {
@@ -25,7 +25,7 @@ body {
     border: none;
     color: white;
     cursor: pointer;
-    transition: background 0.3s, box-shadow 0.3s; /* Add transition for box-shadow */
+    transition: background 0.3s, box-shadow 0.3s; 
 }
 
 .login {
@@ -40,38 +40,36 @@ body {
     opacity: 0.8 !important;
     background: rgb(240, 240, 101);
 }
-
-/* Button-like styles for nav links */
 .nav-link {
-    display: inline-block; /* Make link behave like a button */
-    padding: 10px 15px; /* Add padding */
-    border-radius: 5px; /* Round the corners */
-    color: #171ae6 !important; /* Override Bootstrap's default link color */
-    transition: background 0.3s, color 0.3s, box-shadow 0.3s; /* Add transition for background, color, and box-shadow */
+    display: inline-block;
+    padding: 10px 15px; 
+    border-radius: 5px;
+    color: #171ae6 !important; 
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s; 
 }
 
 .nav-link:hover {
-    background: rgba(184, 235, 192, 0.2); /* Light background on hover */
-    color: #f54b07 !important; /* Change color on hover */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow on hover */
+    background: rgba(184, 235, 192, 0.2); 
+    color: #f54b07 !important; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /
 }
 
 .nav-link:active {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.5); /* Shadow effect when clicked */
-    transform: translateY(2px); /* Slightly move the button down */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 2px 5px rgba(0, 0, 0, 0.5); 
+    transform: translateY(2px); 
 }
 
 
 .dropdown-menu {
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    background-color: rgba(255, 255, 255, 0.9); 
 }
 
 .dropdown-item {
-    color: #000; /* Dropdown item text color */
+    color: #000; 
 }
 
 .dropdown-item:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Change background on hover */
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .avatar {
@@ -119,11 +117,11 @@ body {
     }
 
     .l {
-        margin: 0 auto; /* Center the logo text */
+        margin: 0 auto; 
     }
 
     .avatar img {
-        height: 30px; /* Adjust avatar size for smaller screens */
+        height: 30px; 
     }
 
     .avatar {
